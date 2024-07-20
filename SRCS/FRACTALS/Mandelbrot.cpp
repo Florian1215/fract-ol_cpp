@@ -32,7 +32,7 @@ Mandelbrot &Mandelbrot::operator=(const Mandelbrot &rhs)
 }
 
 // MEMBER FUNCTIONS ------------------------------------------------------------
-int	Mandelbrot::sequence(Data &data, DCo c, DCo co) const
+Color	Mandelbrot::sequence(Data &data, DCo c, DCo co) const
 {
 	int	i;
 	DCo	z(this->_c.getX(), this->_c.getY());
@@ -44,9 +44,8 @@ int	Mandelbrot::sequence(Data &data, DCo c, DCo co) const
 		z.setY(2 * z.getX() * z.getY() + c.getY());
 		z.setX(sqr.getX() - sqr.getY() + c.getX());
 		sqr = DCo(pow(z.getX(), 2), pow(z.getY(), 2));
-		if (sqr.getX() + sqr.getY() > 4)
-			return (get_color(data, (t_color_data){frac, i, sqr.getX() + sqr.getY()}, \
-co, z));
+		if (sqr.sum() > 4)
+			return (this->_getColor(data, i, sqr.sum(), co, z));
 		i++;
 	}
 	return (FG);

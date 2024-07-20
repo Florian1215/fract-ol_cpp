@@ -13,11 +13,35 @@
 #include "Fractals.hpp"
 
 // CONSTRUCTOR - DESTRUCTOR ----------------------------------------------------
-Fractals::Fractals() { }
+Fractals::Fractals(void *mlxPtr) :
+_mlxPtr(mlxPtr),
+_mandelbrot(mlxPtr),
+_julia(mlxPtr),
+_celtic(mlxPtr),
+_burningShip(mlxPtr),
+_buffalo(mlxPtr),
+_burningJulia(mlxPtr),
+_julia3(mlxPtr),
+_celticMandelbar(mlxPtr),
+_perpendicularCeltic(mlxPtr),
+_heart(mlxPtr),
+_mandelbar(mlxPtr),
+_celticMandelbrot(mlxPtr) { }
 
-Fractals::Fractals(void *mlxPtr) : _mandelbrot(mlxPtr), _julia(mlxPtr), _celtic(mlxPtr), _burningShip(mlxPtr), _buffalo(mlxPtr), _burningJulia(mlxPtr), _julia3(mlxPtr), _celticMandelbar(mlxPtr), _perpendicularCeltic(mlxPtr), _heart(mlxPtr), _mandelbar(mlxPtr), _celticMandelbrot(mlxPtr) { }
-
-Fractals::Fractals(const Fractals &src) { *this = src; }
+Fractals::Fractals(const Fractals &src) :
+_mlxPtr(src._mlxPtr),
+_mandelbrot(src._mlxPtr),
+_julia(src._mlxPtr),
+_celtic(src._mlxPtr),
+_burningShip(src._mlxPtr),
+_buffalo(src._mlxPtr),
+_burningJulia(src._mlxPtr),
+_julia3(src._mlxPtr),
+_celticMandelbar(src._mlxPtr),
+_perpendicularCeltic(src._mlxPtr),
+_heart(src._mlxPtr),
+_mandelbar(src._mlxPtr),
+_celticMandelbrot(src._mlxPtr) { *this = src; }
 
 Fractals::~Fractals() {}
 
@@ -26,6 +50,7 @@ Fractals &Fractals::operator=(const Fractals &rhs)
 {
 	if (this != &rhs)
 	{
+		this->_mlxPtr = rhs._mlxPtr;
 		this->_mandelbrot = rhs._mandelbrot;
 		this->_julia = rhs._julia;
 		this->_celtic = rhs._celtic;

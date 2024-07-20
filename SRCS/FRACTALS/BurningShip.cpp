@@ -27,9 +27,8 @@ BurningShip &BurningShip::operator=(const BurningShip &rhs)
 }
 
 // MEMBER FUNCTIONS ------------------------------------------------------------
-int BurningShip::sequence(Data &data, DCo c, DCo co) const
+Color	BurningShip::sequence(Data &data, DCo z, DCo co) const
 {
-	DCo	z(co);
 	DCo	sqr(z, 2);
 	int		i;
 
@@ -37,13 +36,12 @@ int BurningShip::sequence(Data &data, DCo c, DCo co) const
 	i = 0;
 	while (i < this->_maxIter)
 	{
-		z.setY(2 * fabs(z.getX() * z.getY()) + c.getY());
-		z.setX(sqr.getX() - sqr.getY() + c.getX());
+		z.setY(2 * fabs(z.getX() * z.getY()) + z.getY());
+		z.setX(sqr.getX() - sqr.getY() + z.getX());
 		sqr = DCo(z, 2);
-		if (sqr.getX() + sqr.getY() > 4)
-			return (get_color(data, (t_color_data){frac, i, sqr.getX() + sqr.getY()}, \
-co, z));
+		if (sqr.sum() > 4)
+			return (this->_getColor(data, i, sqr.sum(), co, z));
 		i++;
 	}
-	return (FG);
+	return (Color(FG));
 }

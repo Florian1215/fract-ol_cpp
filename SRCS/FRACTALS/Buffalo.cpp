@@ -30,20 +30,19 @@ Buffalo &Buffalo::operator=(const Buffalo &rhs)
 }
 
 // MEMBER FUNCTIONS ------------------------------------------------------------
-int Buffalo::sequence(Data &data, DCo z, DCo co) const
+Color	Buffalo::sequence(Data &data, DCo c, DCo co) const
 {
 	int		i;
-	DCo	sqr(z, 2);
+	DCo	sqr(c, 2);
 
 	i = 0;
 	while (i < this->_maxIter)
 	{
-		z.setY(2 * fabs(z.getX() * z.getY()) + this->_c.getY());
-		z.setX(fabs(sqr.getX() - sqr.getY()) + this->_c.getX());
-		sqr = DCo(z, 2);
-		if (sqr.getX() + sqr.getY() > 4)
-			return (get_color(data, (t_color_data){frac, i, sqr.getX() + sqr.getY()}, \
-co, z));
+		c.setY(2 * fabs(c.getX() * c.getY()) + this->_c.getY());
+		c.setX(fabs(sqr.getX() - sqr.getY()) + this->_c.getX());
+		sqr = DCo(c, 2);
+		if (sqr.sum() > 4)
+			return (this->_getColor(data, i, sqr.sum(), co, c));
 		i++;
 	}
 	return (FG);

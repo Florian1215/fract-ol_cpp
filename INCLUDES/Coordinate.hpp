@@ -39,9 +39,14 @@ public:
 	// GETTER - SETTER ---------------------------------------------------------
 	T				getX() const { return (this->_x); }
 	T				getY() const { return (this->_y); }
+	T				getSideLine(const Coordinate<T> &co) const { return ((0 - \
+this->_x) * (co.getX() - 0) + ((this->_y * -1) + 0) * (co.getY() - this->_x)); }
 
 	void			setX(T x) { this->_x = x; }
 	void			setY(T y) { this->_y = y; }
+
+	// MEMBER FUNCTIONS --------------------------------------------------------
+	T				sum() { return (this->getX() + this->getY()); }
 
 protected:
 	T				_x;

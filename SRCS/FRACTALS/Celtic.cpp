@@ -27,7 +27,7 @@ Celtic &Celtic::operator=(const Celtic &rhs)
 }
 
 // MEMBER FUNCTIONS ------------------------------------------------------------
-int Celtic::sequence(Data &data, DCo c, DCo co) const
+Color Celtic::sequence(Data &data, DCo c, DCo co) const
 {
 	int	i;
 	DCo	z(c.getX(), c.getY());
@@ -39,9 +39,8 @@ int Celtic::sequence(Data &data, DCo c, DCo co) const
 		z.setY((2 * z.getX() * z.getY()) + c.getX() + this->_c.getX());
 		z.setX(fabs(sqr.getX() - sqr.getY()) + c.getY() + fabs(this->_c.getY()));
 		sqr = DCo(pow(z.getX(), 2), pow(z.getY(), 2));
-		if (sqr.getX() + sqr.getY() > 4)
-			return (get_color(data, (t_color_data){frac, i, sqr.getX() + sqr.getY()}, \
-co, z));
+		if (sqr.sum() > 4)
+			return (this->_getColor(data, i, sqr.sum(), co, z));
 		i++;
 	}
 	return (FG);

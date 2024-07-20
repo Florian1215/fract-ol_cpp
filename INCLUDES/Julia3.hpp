@@ -26,7 +26,7 @@ public:
 
 	Julia3 &operator=(const Julia3 &rhs);
 
-	int sequence(Data &data, DCo c, DCo co) const;
+	Color	sequence(Data &data, DCo c, DCo co) const;
 
 private:
 	Julia3();

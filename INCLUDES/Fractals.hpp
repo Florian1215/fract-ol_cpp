@@ -37,8 +37,7 @@ public:
 	Fractal		&operator[](tFractals i);
 
 protected:
-	Fractals();
-
+	void				*_mlxPtr;
 	Mandelbrot			_mandelbrot;
 	Julia				_julia;
 	Celtic				_celtic;

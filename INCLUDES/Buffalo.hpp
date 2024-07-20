@@ -26,7 +26,7 @@ public:
 
 	Buffalo &operator=(const Buffalo &rhs);
 
-	int sequence(Data &data, DCo c, DCo co) const;
+	Color sequence(Data &data, DCo z, DCo co) const;
 
 private:
 	Buffalo();

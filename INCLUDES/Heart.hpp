@@ -26,7 +26,7 @@ public:
 
 	Heart &operator=(const Heart &rhs);
 
-	int sequence(Data &data, DCo c, DCo co) const;
+	Color	sequence(Data &data, DCo c, DCo co) const;
 
 private:
 	Heart();

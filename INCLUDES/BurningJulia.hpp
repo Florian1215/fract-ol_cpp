@@ -26,7 +26,7 @@ public:
 
 	BurningJulia &operator=(const BurningJulia &rhs);
 
-	int sequence(Data &data, DCo c, DCo co) const;
+	Color sequence(Data &data, DCo c, DCo co) const;
 
 private:
 	BurningJulia();

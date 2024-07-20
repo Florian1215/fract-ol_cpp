@@ -46,8 +46,6 @@ DCo	DCo::operator+(int value) const
 	return (_new);
 }
 
-
-
 std::ostream	&operator<<(std::ostream &os, const DCo &co)
 {
 	os << Coordinate<double>(co);

@@ -26,7 +26,7 @@ public:
 
 	CelticMandelbrot &operator=(const CelticMandelbrot &rhs);
 
-	int sequence(Data &data, DCo c, DCo co) const;
+	Color	sequence(Data &data, DCo c, DCo co) const;
 
 private:
 	CelticMandelbrot();

@@ -37,15 +37,24 @@ typedef enum eLevel
 class Data
 {
 public:
+	// CONSTRUCTOR - DESTRUCTOR ------------------------------------------------
 	Data();
 	Data(const Data &src);
 	~Data();
 
+	// OPERATOR OVERLOADING ----------------------------------------------------
 	Data						&operator=(const Data &rhs);
 
-	int							getHWin() const;
-	int							getQWin() const;
+	// GETTER - SETTER ---------------------------------------------------------
 	void						*getMlxPtr() const;
+	const AnimationValue		&getBw() const;
+	const AnimationValue		&getColor() const;
+	const AnimationValue		&getAppearance() const;
+	int 						getOffsetColor() const;
+	bool						isInMenu() const;
+	const DCo					&getColorAnimationLineCo() const;
+	const Palettes				&getPal() const;
+	const Menu					&getMenu() const;
 
 private:
 	void						stopAnimation();
@@ -63,8 +72,7 @@ private:
 	int							_page;
 	bool						_editC;
 	Animation					_c;
-	tAppearance					_appearance;
-	Animation					_animAppearance;
+	AnimationValue				_appearance;
 	AnimationValue				_bw;
 	DCo							_colorAnimationLineCo;
 	tLevel						_renderLevel;
@@ -83,5 +91,7 @@ private:
 	bool						_isKeyBuff;
 	pthread_mutex_t				_mutexLine;
 };
+
+double							getValue(double a, double b, int i);
 
 #endif

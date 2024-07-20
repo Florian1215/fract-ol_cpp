@@ -30,7 +30,7 @@ Julia3 &Julia3::operator=(const Julia3 &rhs)
 }
 
 // MEMBER FUNCTIONS ------------------------------------------------------------
-int Julia3::sequence(Data &data, DCo z, DCo co) const
+Color	Julia3::sequence(Data &data, DCo z, DCo co) const
 {
 	int		i;
 	DCo	sqr(z, 2);
@@ -42,9 +42,8 @@ int Julia3::sequence(Data &data, DCo z, DCo co) const
 		z.setX(sqr.getX() * z.getX() - 3 * sqr.getY() * z.getX() + this->_c.getX());
 		z.setY(-z.getY() * z.getY() * z.getY() + 3 * sqr.getX() * z.getY() + this->_c.getY());
 		sqr = DCo(z, 2);
-		if (sqr.getX() + sqr.getY() > 4)
-			return (get_color(data, (t_color_data){frac, i, sqr.getX() + sqr.getY()}, \
-co, z));
+		if (sqr.sum() > 4)
+			return (this->_getColor(data, i, sqr.sum(), co, z));
 		i++;
 	}
 	return (FG);

@@ -14,6 +14,7 @@
 # define MENU_HPP
 
 # include "DCo.hpp"
+# include "Animation.hpp"
 
 typedef enum ePos
 {
@@ -24,7 +25,7 @@ typedef enum ePos
 	POS_4,
 }			tPos;
 
-class Menu
+class Menu : public Animation
 {
 public:
 	Menu();
@@ -34,11 +35,9 @@ public:
 	Menu &operator=(const Menu &rhs);
 
 private:
-	bool	_animation;
 	bool	_saveImg;
 	int		_start;
 	int		_end;
-	int		_i;
 	int		_size;
 	tPos	_pos;
 	DCo		_value;

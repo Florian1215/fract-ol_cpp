@@ -26,7 +26,7 @@ public:
 
 	PerpendicularCeltic &operator=(const PerpendicularCeltic &rhs);
 
-	int sequence(Data &data, DCo c, DCo co) const;
+	Color	sequence(Data &data, DCo c, DCo co) const;
 
 private:
 	PerpendicularCeltic();

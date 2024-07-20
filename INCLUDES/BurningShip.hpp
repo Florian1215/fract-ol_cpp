@@ -19,14 +19,12 @@ class BurningShip : public Fractal
 {
 public:
 	BurningShip(void *mlxPtr);
-
 	BurningShip(const BurningShip &src);
-
 	~BurningShip();
 
 	BurningShip &operator=(const BurningShip &rhs);
 
-	int sequence(Data &data, DCo c, DCo co) const;
+	Color sequence(Data &data, DCo c, DCo co) const;
 
 private:
 	BurningShip();

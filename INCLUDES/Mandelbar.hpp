@@ -19,14 +19,12 @@ class Mandelbar : public Fractal
 {
 public:
 	Mandelbar(void *mlxPtr);
-
 	Mandelbar(const Mandelbar &src);
-
 	~Mandelbar();
 
-	Mandelbar &operator=(const Mandelbar &rhs);
+	Mandelbar	&operator=(const Mandelbar &rhs);
 
-	int sequence(Data &data, DCo c, DCo co) const;
+	Color		sequence(Data &data, DCo c, DCo co) const;
 
 private:
 	Mandelbar();

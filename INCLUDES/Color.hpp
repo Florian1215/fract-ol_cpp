@@ -14,19 +14,40 @@
 # define COLOR_HPP
 
 # include <stdexcept>
+# include "DCo.hpp"
+#include "Palette.hpp"
+
+class Data;
 
 class Color
 {
 public:
+	Color();
 	Color(int color);
 	Color(unsigned char r, unsigned char g, unsigned char b);
 	Color(const Color &src);
 	~Color();
 
-	Color &operator=(const Color &rhs);
+	// OPERATOR OVERLOADING ----------------------------------------------------
+	Color			&operator=(const Color &rhs);
+	bool			operator==(int rhs) const;
+	operator		int() const;
+	operator		unsigned int() const;
+
+	// GETTER - SETTER ---------------------------------------------------------
+	unsigned char	getR() const;
+	unsigned char	getG() const;
+	unsigned char	getB() const;
+	void			setColor(unsigned int color);
+	void			setRGB(unsigned char r, unsigned char g, unsigned char b);
+
+	// MEMBER FUNCTIONS --------------------------------------------------------
+	void			renderBW(Data &data, DCo z, bool prevRender);
+	void			renderColor(Data &data, int i, double op, bool prevRender);
 
 private:
-	Color();
+	void			_getGradientColors(const Color &c1, int i);
+	void			_getGradientPalettes(const Palette &pal, double op, int colorShade, int cat);
 
 	unsigned int	_color;
 	unsigned char	_r;

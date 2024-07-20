@@ -52,9 +52,11 @@ public:
 
 	Fractal &operator=(const Fractal &rhs);
 
-	virtual int		sequence(Data &, DCo, DCo) const = 0;
+	virtual Color	sequence(Data &, DCo, DCo) const = 0;
 
 protected:
+	void			_initMenu();
+	Color			_getColor(Data &data, int i, double op, DCo co, DCo z);
 
 	tFractals		_set;
 	tPalette		_color;

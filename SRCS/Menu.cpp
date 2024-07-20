@@ -13,22 +13,21 @@
 #include "Menu.hpp"
 
 // CONSTRUCTOR - DESTRUCTOR ----------------------------------------------------
-Menu::Menu() : _animation(false), _saveImg(false) { }
+Menu::Menu() : Animation(), _saveImg(false) { }
 
-Menu::Menu(const Menu &src) { *this = src; }
+Menu::Menu(const Menu &src) : Animation(src) { *this = src; }
 
 Menu::~Menu() { }
 
 // OPERATOR OVERLOADING --------------------------------------------------------
 Menu &Menu::operator=(const Menu &rhs)
 {
+	Animation::operator=(rhs);
 	if (this != &rhs)
 	{
-		this->_animation = rhs._animation;
 		this->_saveImg = rhs._saveImg;
 		this->_start = rhs._start;
 		this->_end = rhs._end;
-		this->_i = rhs._i;
 		this->_size = rhs._size;
 		this->_pos = rhs._pos;
 		this->_value = rhs._value;

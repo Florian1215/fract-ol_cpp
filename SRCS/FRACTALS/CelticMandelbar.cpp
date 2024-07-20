@@ -30,7 +30,7 @@ CelticMandelbar &CelticMandelbar::operator=(const CelticMandelbar &rhs)
 }
 
 // MEMBER FUNCTIONS ------------------------------------------------------------
-int CelticMandelbar::sequence(Data &data, DCo z, DCo co) const
+Color	CelticMandelbar::sequence(Data &data, DCo z, DCo co) const
 {
 	int		i;
 	DCo	sqr(z, 2);
@@ -42,9 +42,8 @@ int CelticMandelbar::sequence(Data &data, DCo z, DCo co) const
 		z.setY(-2 * z.getX() * z.getY() + this->_c.getY());
 		z.setX(fabs(sqr.getX() - sqr.getY()) + this->_c.getX());
 		sqr = DCo(z, 2);
-		if (sqr.getX() + sqr.getY() > 4)
-			return (get_color(data, (t_color_data){frac, i, sqr.getX() + sqr.getY()}, \
-co, z));
+		if (sqr.sum() > 4)
+			return (this->_getColor(data, i, sqr.sum(), co, z));
 		i++;
 	}
 	return (FG);

@@ -30,7 +30,7 @@ BurningJulia &BurningJulia::operator=(const BurningJulia &rhs)
 }
 
 // MEMBER FUNCTIONS ------------------------------------------------------------
-int BurningJulia::sequence(Data &data, DCo c, DCo co) const
+Color	BurningJulia::sequence(Data &data, DCo c, DCo co) const
 {
 	DCo	z(c);
 	DCo	sqr(z, 2);
@@ -43,9 +43,8 @@ int BurningJulia::sequence(Data &data, DCo c, DCo co) const
 		z.setY(fabs(2 * z.getX() * z.getY() - this->_c.getY()));
 		z.setX(sqr.getX() - sqr.getY() - this->_c.getX());
 		sqr = DCo(z, 2);
-		if (sqr.getX() + sqr.getY() > 4)
-			return (get_color(data, (t_color_data){frac, i, sqr.getX() + sqr.getY()}, \
-co, z));
+		if (sqr.sum() > 4)
+			return (this->_getColor(data, i, sqr.sum(), co, z));
 		i++;
 	}
 	return (FG);

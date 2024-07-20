@@ -13,18 +13,34 @@
 #include "Data.hpp"
 
 // CONSTRUCTOR - DESTRUCTOR ----------------------------------------------------
-Data::Data() : _mlxPtr(mlx_init()),
+Data::Data() :
+_mlxPtr(mlx_init()),
 _winPtr(mlx_new_window(this->_mlxPtr, WIN, WIN, const_cast<char *>(std::string(PROJECT_NAME).c_str()))),
-_img(this->_mlxPtr), _fractals(this->_mlxPtr), _f(this->_fractals[MANDELBROT]),
-_offsetColor(0), _page(0), _appearance(LIGHT), _renderLevel(_100),
-_lastRender(0), _prevRender(false), _inMenu(true), _slide(this->_mlxPtr),
+_img(this->_mlxPtr),
+_fractals(this->_mlxPtr),
+_f(this->_fractals[MANDELBROT]),
+_color(GREEN),
+_offsetColor(0),
+_page(0),
+_appearance(LIGHT),
+_bw(OFF),
+_renderLevel(_100),
+_lastRender(0),
+_prevRender(false),
+_inMenu(true),
+_slide(this->_mlxPtr),
 _isKeyBuff(false)
 {
 	this->stopAnimation();
 	pthread_mutex_init(&this->_mutexLine, NULL);
 }
 
-Data::Data(const Data &src) : _winPtr(NULL), _img(src._mlxPtr), _fractals(src._mlxPtr), _f(this->_fractals[MANDELBROT]), _slide(src._mlxPtr) { *this = src; }
+Data::Data(const Data &src) :
+_winPtr(NULL),
+_img(src._mlxPtr),
+_fractals(src._mlxPtr),
+_f(this->_fractals[MANDELBROT]),
+_slide(src._mlxPtr) { *this = src; }
 
 Data::~Data() { }
 
@@ -55,7 +71,6 @@ Data &Data::operator=(const Data &rhs)
 		this->_editC = rhs._editC;
 		this->_c = rhs._c;
 		this->_appearance = rhs._appearance;
-		this->_animAppearance = rhs._animAppearance;
 		this->_bw = rhs._bw;
 		this->_colorAnimationLineCo = rhs._colorAnimationLineCo;
 		this->_renderLevel = rhs._renderLevel;
@@ -93,7 +108,20 @@ void	Data::stopAnimation()
 }
 
 // GETTER - SETTER -------------------------------------------------------------
-void	*Data::getMlxPtr() const
-{
-	return _mlxPtr;
-}
+void	*Data::getMlxPtr() const { return (this->_mlxPtr); }
+
+const AnimationValue	&Data::getBw() const { return (this->_bw); }
+
+const AnimationValue	&Data::getColor() const { return (this->_color); }
+
+const AnimationValue	&Data::getAppearance() const { return (this->_appearance); }
+
+int	Data::getOffsetColor() const { return (this->_offsetColor); }
+
+bool Data::isInMenu() const { return (this->_inMenu); }
+
+const DCo	&Data::getColorAnimationLineCo() const { return (this->_colorAnimationLineCo); }
+
+const Palettes	&Data::getPal() const { return (this->_pal); }
+
+const Menu	&Data::getMenu() const { return (this->_menu); }
